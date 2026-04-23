@@ -104,6 +104,7 @@ class EntradaDeCinema:
         # acrescimo de 50% entre 17h e meia-noite
         if 17 <= self._hora <= 23
             valor *= 1.5
+          return valor
 
 
 # Interface com usuário (User Interface) - prints, inputs
@@ -115,6 +116,9 @@ class UI:
             op = UI.menu()
             if op == 1: UI.triangulo()
             if op == 2: UI.circulo()
+            if op == 3: UI.viagem()
+            if op == 4: UI.conta()
+            if op == 5: UI.cinema()
 
     @staticmethod
     def menu():
@@ -133,6 +137,52 @@ class UI:
 
     @staticmethod
     def circulo():
-        print("Em construção")
+        print("Cálculo do circulo")
+        c + circulo(float(input("informe o raio: ")))
+        print("Area:", c.calc_area())
+        print("circunferencia", c.calc_circunferencia())
+
+    @staticmethod
+    def conta():
+      print("calculo de velocidade média")
+      v = viagem()
+      v.set_distancia(float(input("distancia (km):")))
+      v.set_tempo(float(input("tempo (h):")))
+      print("velocidade média:", v.velocidade_media())
+
+    @staticmethod
+    def conta():
+      print("conta bancaria")
+      titular = input("nome do titular: ")
+      numero = int(input("numero da conta: "))
+
+      c = ContaBancária(titular, numero)
+
+      op = 0 
+      while op !=3:
+        print("1-depositar")
+        print("2-sacar")
+        print("3-sair")
+        op=int(input("escolha:"))
+
+        if op == 1:
+          valor=float(input("valor para deposito: "))
+          c.depositar(valor)
+        elif op == 2:
+          valor=float(Input("valor para saque: "))
+          c.sacar(valor)
+
+      print("saldo final:", c.get_saldo())
+
+    @staticmethod
+    def cinema():
+      print("Entrada de Cinema")
+      dia = input("dia da semana: ")
+      hora = int(input("hora(0-23): "))
+
+      e = EntradaDeCinema(dia,hora)
+      valor = e.calcular_valor()
+
+      print("valor do ingresso:", valor)
 
 UI.main()
